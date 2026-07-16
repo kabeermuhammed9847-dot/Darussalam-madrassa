@@ -1,0 +1,247 @@
+[7/16/2026 11:07 PM] Mashood Thennala: <!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ - COMPLETE</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Malayalam',sans-serif}
+body{background:#f6f8f5}
+:root{--green:#0e5c35;--gold:#c9a227;--light:#e8f5e9}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e5c35,#1a8a4a 60%,#c9a227 100%);padding:20px}
+.login-card{background:white;padding:32px;border-radius:20px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.25)}
+.login-card input{width:100%;padding:13px;border:2px solid #e5e5e5;border-radius:10px;margin:6px 0}
+.login-card button{width:100%;padding:13px;background:var(--green);color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:8px}
+#main{display:none}
+header{background:white;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.06);flex-wrap:wrap;gap:6px}
+.logo{font-weight:800;color:var(--green);font-size:16px;line-height:1.1} .logo small{color:var(--gold);font-size:11px;display:block}
+.hero{background:linear-gradient(135deg,#0e5c35,#0a3d23);color:white;padding:28px 20px;text-align:center}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding:10px 12px;background:#eef3ec;position:sticky;top:56px;z-index:90}
+.tabs button{padding:8px 12px;border:none;background:white;border-radius:18px;cursor:pointer;font-size:11px;font-weight:600;white-space:nowrap;flex-shrink:0}
+.tabs button.active{background:var(--green);color:white}
+.container{max-width:1100px;margin:0 auto;padding:12px}
+.section{display:none}.section.active{display:block}
+.card{background:white;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,0.04);margin-bottom:10px;position:relative;border:1px solid #f0f0f0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.person-card{text-align:center;padding:14px}
+.avatar{width:56px;height:56px;background:#e8f5e9;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid var(--gold)}
+.badge{background:var(--light);color:var(--green);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.edit-icon{position:absolute;top:6px;right:6px;background:var(--gold);color:white;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;display:none;font-size:11px;align-items:center;justify-content:center}
+.edit-mode .edit-icon{display:flex}
+.upload-btn{width:100%;background:var(--green);color:white;padding:16px;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:14px;display:block;text-align:center}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px}
+.gallery-item{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:1;background:#111}
+.gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item .del{position:absolute;top:4px;right:4px;background:#ff3b3b;color:white;border:none;border-radius:50%;width:20px;height:20px;cursor:pointer;font-size:10px}
+.status{padding:8px 12px;border-radius:8px;margin-top:10px;font-size:11px;display:none}
+.status.ok{display:block;background:#e8f5e9;color:var(--green)}
+</style>
+</head>
+<body>
+<div id="login" class="login-wrap">
+<div class="login-card">
+<div style="font-size:38px">🕌</div>
+<h2 style="color:#0e5c35">ദാറുസ്സലാം മദ്റസ</h2>
+<p style="color:#666;font-size:12px;margin:4px 0 12px">തെന്നല ആലുങ്ങൽ - Complete Portal</p>
+[7/16/2026 11:07 PM] Mashood Thennala: <input id="pwd" type="password" placeholder="Password" value="darussalam123">
+<button onclick="doLogin()">പ്രവേശിക്കുക</button>
+<p style="font-size:10px;color:#888;margin-top:8px">Password: darussalam123</p>
+</div>
+</div>
+
+<div id="main">
+<header>
+<div class="logo">🕌 ദാറുസ്സലാം മദ്റസ<small>തെന്നല ആലുങ്ങൽ - Complete</small></div>
+<div style="display:flex;gap:6px">
+<button onclick="shareLink()" style="padding:6px 10px;background:#1877f2;color:white;border:none;border-radius:8px;cursor:pointer;font-size:11px">🔗 Share Link</button>
+<button onclick="saveAll()" style="padding:6px 10px;background:#0e5c35;color:white;border:none;border-radius:8px;cursor:pointer;font-size:11px">💾 Save</button>
+</div>
+</header>
+
+<div class="hero"><h1>ദാറുസ്സലാം മദ്റസ</h1><p>തെന്നല ആലുങ്ങൽ • മലപ്പുറം</p></div>
+
+<div class="tabs">
+<button onclick="openTab('home',this)" class="active">ഹോം</button>
+<button onclick="openTab('address',this)">📍 അഡ്രസ്</button>
+<button onclick="openTab('management',this)">മാനേജ്മെന്റ്</button>
+<button onclick="openTab('teachers',this)">ടീച്ചേഴ്സ്</button>
+<button onclick="openTab('students',this)">👨‍🎓 സ്റ്റുഡന്റ്സ്</button>
+<button onclick="openTab('awards',this)">🏆 അവാർഡ്</button>
+<button onclick="openTab('gallery',this)">📸 ഗാലറി</button>
+</div>
+
+<div class="container">
+<div id="home" class="section active">
+<div class="card" style="background:linear-gradient(135deg,#0e5c35,#1a8a4a);color:white;border:none">
+<h2 style="color:white">അസ്സലാമു അലൈക്കും</h2>
+<p style="margin-top:8px;line-height:1.6;font-size:13px">ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങലിലേക്ക് സ്വാഗതം. വിശുദ്ധ ഖുർആനിന്റെയും സുന്നത്തിന്റെയും അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്ന സ്ഥാപനം.</p>
+<div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
+<div style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:8px;text-align:center"><b style="font-size:12px">4</b><br><small style="font-size:10px">മാനേജ്മെന്റ്</small></div>
+<div style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:8px;text-align:center"><b style="font-size:12px">6</b><br><small style="font-size:10px">ടീച്ചേഴ്സ്</small></div>
+<div style="background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:8px;text-align:center"><b style="font-size:12px">തെന്നല</b><br><small style="font-size:10px">ആലുങ്ങൽ</small></div>
+</div>
+</div>
+</div>
+
+<div id="address" class="section">
+<div class="card" id="addrCard">
+<button class="edit-icon" onclick="editAddress()">✏️</button>
+<h3 style="color:#0e5c35;font-size:14px">📍 അഡ്രസ് വിവരങ്ങൾ</h3>
+<div id="addrContent" style="margin-top:10px;line-height:1.8;font-size:13px">
+<p><b>സ്ഥാപനം:</b> ദാറുസ്സലാം മദ്റസ</p>
+<p><b>സ്ഥലം:</b> തെന്നല ആലുങ്ങൽ, തെന്നല, മലപ്പുറം ജില്ല, കേരളം</p>
+<p><b>പിൻകോഡ്:</b> 676508</p>
+<p><b>ഫോൺ:</b> +91 9XXXXXXXXX (ഇവിടെ ക്ലിക്ക് ചെയ്ത് എഡിറ്റ് ചെയ്യാം)</p>
+<p><b>സമയം:</b> രാവിലെ 8 AM - വൈകിട്ട് 5 PM</p>
+</div>
+</div>
+</div>
+
+<div id="management" class="section">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><h3 style="color:#0e5c35;font-size:14px">മാനേജ്മെന്റ്</h3><button onclick="addMember('mgmt')" style="padding:5px 10px;background:#0e5c35;color:white;border:none;border-radius:14px;cursor:pointer;font-size:10px">+ ചേർക്കുക</button></div>
+<div class="grid" id="mgmtGrid"></div>
+</div>
+
+<div id="teachers" class="section">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><h3 style="color:#0e5c35;font-size:14px">ടീച്ചേഴ്സ് (ഉസ്താദുമാർ)</h3><button onclick="addMember('teach')" style="padding:5px 10px;background:#0e5c35;color:white;border:none;border-radius:14px;cursor:pointer;font-size:10px">+ ചേർക്കുക</button></div>
+<div class="grid" id="teachGrid"></div>
+</div>
+
+<div id="students" class="section">
+<div class="card">
+<h3 style="color:#0e5c35;font-size:14px">👨‍🎓 സ്റ്റുഡന്റ്സ് വിഭാഗം</h3>
+[7/16/2026 11:07 PM] Mashood Thennala: <p style="font-size:11px;color:#666;margin-top:6px">എഡിറ്റ് ബട്ടൺ അമർത്തി സ്റ്റുഡന്റ്സ് വിവരങ്ങൾ ചേർക്കാം</p>
+</div>
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><h4 style="font-size:13px">ക്ലാസുകൾ / വിഭാഗങ്ങൾ</h4><button onclick="addStudent()" style="padding:5px 10px;background:#0e5c35;color:white;border:none;border-radius:14px;cursor:pointer;font-size:10px">+ വിഭാഗം ചേർക്കുക</button></div>
+<div class="grid" id="studGrid"></div>
+</div>
+
+<div id="awards" class="section">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><h3 style="color:#0e5c35;font-size:14px">🏆 അവാർഡുകൾ</h3><button onclick="addAward()" style="padding:5px 10px;background:#c9a227;color:white;border:none;border-radius:14px;cursor:pointer;font-size:10px">+ ചേർക്കുക</button></div>
+<div class="grid" id="awardGrid"></div>
+</div>
+
+<div id="gallery" class="section">
+<div class="card">
+<h3 style="color:#0e5c35;font-size:14px">📸 ഫോട്ടോ & വീഡിയോ ഗാലറി</h3>
+<p style="font-size:11px;color:#666;margin:6px 0 10px">Chrome-ൽ തുറന്നാൽ 100% വർക്ക് ആകും</p>
+
+<button onclick="document.getElementById('fileInput').click()" class="upload-btn">
+📷 ഇവിടെ ക്ലിക്ക് ചെയ്ത് ഫോട്ടോ / വീഡിയോ അപ്‌ലോഡ് ചെയ്യുക
+</button>
+<input type="file" id="fileInput" multiple accept="image/*,video/*" style="display:none">
+
+<div id="status" class="status"></div>
+<div style="display:flex;justify-content:space-between;margin-top:12px"><h4 style="font-size:12px">ഗാലറി (<span id="count">0</span>)</h4><button onclick="clearGallery()" style="font-size:10px;padding:4px 8px;background:#ffeaea;color:#c00;border:none;border-radius:10px;cursor:pointer">Clear</button></div>
+<div class="gallery-grid" id="galGrid"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;align-items:center;justify-content:center;padding:16px">
+<div style="background:white;padding:20px;border-radius:14px;max-width:360px;width:100%">
+<h3 id="modalTitle" style="font-size:14px">എഡിറ്റ്</h3>
+<div id="modalFields" style="margin-top:10px"></div>
+<div style="display:flex;gap:8px;margin-top:10px"><button onclick="saveModal()" style="background:#0e5c35;color:white;flex:1;padding:8px;border:none;border-radius:8px;cursor:pointer">സേവ്</button><button onclick="closeModal()" style="background:#eee;flex:1;padding:8px;border:none;border-radius:8px;cursor:pointer">Cancel</button></div>
+</div>
+</div>
+
+<script>
+let data={
+ mgmt:[
+  {name:'എം ആലി ബാവ ഹാജി',role:'പ്രസിഡണ്ട്'},
+  {name:'വി പി അബ്ദുശുകൂർ ഫൈസി',role:'സെക്രട്ടറി'},
+  {name:'കെ ടി നാസർ',role:'ട്രഷറർ'},
+  {name:'മുഹമ്മദ് കബീർ ഹൈത്തമി തെന്നല',role:'സ്വദർ ഉസ്താദ്'}
+ ],
+ teach:[
+  {name:'അബ്ദുൽ അസീസ് ഫൈസി കുണ്ടൂർ',role:'മുദരിസ്'},
+  {name:'മുഹമ്മദ് സ്വാദിഖ് ഫൈസി കുറുകത്താണി',role:'മുദരിസ്'},
+  {name:'മുഹമ്മദ് സലാഹുദ്ധീൻ ഫൈസി തെന്നല',role:'മുദരിസ്'},
+  {name:'മുഹമ്മദ് നാഫിഹ് ഫൈസി ചെമ്മാട്',role:'മുദരിസ്'},
+  {name:'മുഹമ്മദ് നസീം ഫൈസി പുതുപ്പറമ്പ്',role:'മുദരിസ്'},
+  {name:'മുഹമ്മദ് ഇർഫാൻ ഹുദവി പൂക്കിപ്പറമ്പ്',role:'മുദരിസ്'}
+ ],
+ stud:[
+  {name:'ഹിഫ്സ് വിഭാഗം',role:'45 വിദ്യാർത്ഥികൾ'},
+  {name:'ദർസ് വിഭാഗം',role:'60 വിദ്യാർത്ഥികൾ'},
+  {name:'ബാലപാഠം',role:'30 വിദ്യാർത്ഥികൾ'}
+ ],
+ awards:[
+  {name:'മികച്ച മദ്റസ അംഗീകാരം',role:'2024 - തെന്നല'}
+ ]
+};
+let galleryData=JSON.parse(localStorage.getItem('ds_complete_gallery')||'[]');
+let currentEdit=null;
+
+function doLogin(){document.getElementById('login').style.display='none';document.getElementById('main').style.display='block';loadAll()}
+function openTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function showStatus(m,ok=true){const s=document.getElementById('status');s.textContent=m;s.className='status '+(ok?'ok':'err');setTimeout(()=>s.className='status',3000)}
+[7/16/2026 11:07 PM] Mashood Thennala: function render(){
+ document.getElementById('mgmtGrid').innerHTML='';data.mgmt.forEach((m,i)=>{document.getElementById('mgmtGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('mgmt',${i})">✏️</button><div class="avatar">👤</div><span class="badge">${m.role}</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4></div>});
+ document.getElementById('teachGrid').innerHTML='';data.teach.forEach((m,i)=>{document.getElementById('teachGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('teach',${i})">✏️</button><div class="avatar">📚</div><span class="badge">ഉസ്താദ്</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4><p style="font-size:9px;color:#666">${m.role}</p></div>});
+ document.getElementById('studGrid').innerHTML='';data.stud.forEach((m,i)=>{document.getElementById('studGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('stud',${i})">✏️</button><div class="avatar">🎓</div><h4 style="font-size:11px">${m.name}</h4><p style="font-size:10px;color:#0e5c35;font-weight:600">${m.role}</p></div>});
+ document.getElementById('awardGrid').innerHTML='';data.awards.forEach((m,i)=>{document.getElementById('awardGrid').innerHTML+=<div class="card"><button class="edit-icon" onclick="editItem('awards',${i})">✏️</button><h4 style="font-size:12px">🏆 ${m.name}</h4><p style="font-size:10px;color:#666">${m.role}</p></div>});
+ document.body.classList.add('edit-mode');
+}
+function editItem(t,i){currentEdit={type:t,idx:i};const it=data[t][i];openModal('എഡിറ്റ്',[{label:'പേര്',id:'f1',value:it.name},{label:'വിവരം',id:'f2',value:it.role}])}
+function addMember(t){currentEdit={type:t,idx:-1};openModal('ചേർക്കുക',[{label:'പേര്',id:'f1',value:''},{label:'സ്ഥാനം',id:'f2',value:''}])}
+function addStudent(){currentEdit={type:'stud',idx:-1};openModal('സ്റ്റുഡന്റ് വിഭാഗം',[{label:'വിഭാഗം',id:'f1',value:''},{label:'എണ്ണം',id:'f2',value:''}])}
+function addAward(){currentEdit={type:'awards',idx:-1};openModal('അവാർഡ്',[{label:'പേര്',id:'f1',value:''},{label:'വർഷം',id:'f2',value:''}])}
+function editAddress(){openModal('അഡ്രസ് എഡിറ്റ്',[{label:'വിവരങ്ങൾ',id:'f1',value:document.getElementById('addrContent').innerText,type:'textarea'}]);currentEdit={type:'address'}}
+function openModal(t,fields){document.getElementById('modalTitle').innerText=t;document.getElementById('modalFields').innerHTML='';fields.forEach(f=>{document.getElementById('modalFields').innerHTML+=<label style="font-size:11px;font-weight:600">${f.label}</label>${f.type==='textarea'? <textarea id="${f.id}" rows="4" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px">${f.value}</textarea>:<input id="${f.id}" value="${f.value}" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px">}});document.getElementById('modal').style.display='flex'}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function saveModal(){
+ if(currentEdit.type==='address'){document.getElementById('addrContent').innerHTML=document.getElementById('f1').value.split('\n').map(l=><p>${l}</p>).join('')}
+ else{const v1=document.getElementById('f1').value,v2=document.getElementById('f2').value;if(!v1)return;if(currentEdit.idx===-1)data[currentEdit.type].push({name:v1,role:v2});else data[currentEdit.type][currentEdit.idx]={name:v1,role:v2};render();}
+ closeModal();saveLS();
+}
+
+function addToGrid(src,type){
+ const grid=document.getElementById('galGrid');
+ const div=document.createElement('div');div.className='gallery-item';
+ div.innerHTML=(type==='video'?<video src="${src}" controls playsinline style="width:100%;height:100%;object-fit:cover"></video>:<img src="${src}" style="width:100%;height:100%;object-fit:cover">)+<button class="del" onclick="this.parentElement.remove();updateCount()">✕</button>;
+[7/16/2026 11:07 PM] Mashood Thennala: grid.prepend(div);
+ updateCount();
+}
+function updateCount(){document.getElementById('count').innerText=document.getElementById('galGrid').children.length}
+function handleFiles(files){
+ if(!files||files.length===0)return;
+ showStatus(files.length+' ഫയൽ അപ്‌ലോഡ് ചെയ്യുന്നു...',true);
+ Array.from(files).forEach(file=>{
+  const reader=new FileReader();const isVideo=file.type.startsWith('video');
+  reader.onload=e=>{
+   const src=e.target.result;
+   addToGrid(src,isVideo?'video':'image');
+   galleryData.unshift({src,type:isVideo?'video':'image'});
+   localStorage.setItem('ds_complete_gallery',JSON.stringify(galleryData));
+   updateCount();
+  };
+  reader.readAsDataURL(file);
+ });
+ setTimeout(()=>showStatus('✅ അപ്‌ലോഡ് ആയി!',true),800);
+}
+function clearGallery(){if(confirm('Clear gallery?')){galleryData=[];localStorage.removeItem('ds_complete_gallery');document.getElementById('galGrid').innerHTML='';updateCount()}}
+function saveLS(){localStorage.setItem('ds_complete_data',JSON.stringify(data));localStorage.setItem('ds_complete_addr',document.getElementById('addrContent').innerHTML);localStorage.setItem('ds_complete_gallery',JSON.stringify(galleryData))}
+function saveAll(){saveLS();showStatus('✅ Saved!',true)}
+function loadAll(){
+ const d=localStorage.getItem('ds_complete_data');if(d){try{data=JSON.parse(d)}catch(e){}}
+ const a=localStorage.getItem('ds_complete_addr');if(a)document.getElementById('addrContent').innerHTML=a;
+ galleryData=JSON.parse(localStorage.getItem('ds_complete_gallery')||'[]');
+ galleryData.slice().reverse().forEach(i=>addToGrid(i.src,i.type));
+ updateCount();render();
+}
+function shareLink(){
+ if(navigator.share){navigator.share({title:'ദാറുസ്സലാം മദ്റസ',text:'ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ പോർട്ടൽ',url:window.location.href})}
+ else{prompt('ഈ ലിങ്ക് കോപ്പി ചെയ്ത് മറ്റുള്ളവർക്ക് അയക്കുക:',window.location.href)}
+}
+
+document.getElementById('fileInput').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
+window.addEventListener('load',()=>{doLogin();loadAll()});
+render();
+</script>
+</body>
+</html>
