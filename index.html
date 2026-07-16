@@ -1,4 +1,4 @@
-[7/16/2026 11:07 PM] Mashood Thennala: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ml">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +44,7 @@ header{background:white;padding:10px 16px;display:flex;justify-content:space-bet
 <div style="font-size:38px">🕌</div>
 <h2 style="color:#0e5c35">ദാറുസ്സലാം മദ്റസ</h2>
 <p style="color:#666;font-size:12px;margin:4px 0 12px">തെന്നല ആലുങ്ങൽ - Complete Portal</p>
-[7/16/2026 11:07 PM] Mashood Thennala: <input id="pwd" type="password" placeholder="Password" value="darussalam123">
+: <input id="pwd" type="password" placeholder="Password" value="darussalam123">
 <button onclick="doLogin()">പ്രവേശിക്കുക</button>
 <p style="font-size:10px;color:#888;margin-top:8px">Password: darussalam123</p>
 </div>
@@ -66,7 +66,7 @@ header{background:white;padding:10px 16px;display:flex;justify-content:space-bet
 <button onclick="openTab('address',this)">📍 അഡ്രസ്</button>
 <button onclick="openTab('management',this)">മാനേജ്മെന്റ്</button>
 <button onclick="openTab('teachers',this)">ടീച്ചേഴ്സ്</button>
-<button onclick="openTab('students',this)">👨‍🎓 സ്റ്റുഡന്റ്സ്</button>
+<button onclick="openTab('students',this)">👨🎓 സ്റ്റുഡന്റ്സ്</button>
 <button onclick="openTab('awards',this)">🏆 അവാർഡ്</button>
 <button onclick="openTab('gallery',this)">📸 ഗാലറി</button>
 </div>
@@ -86,7 +86,7 @@ header{background:white;padding:10px 16px;display:flex;justify-content:space-bet
 
 <div id="address" class="section">
 <div class="card" id="addrCard">
-<button class="edit-icon" onclick="editAddress()">✏️</button>
+<button class="edit-icon" onclick="editAddress()">✏</button>
 <h3 style="color:#0e5c35;font-size:14px">📍 അഡ്രസ് വിവരങ്ങൾ</h3>
 <div id="addrContent" style="margin-top:10px;line-height:1.8;font-size:13px">
 <p><b>സ്ഥാപനം:</b> ദാറുസ്സലാം മദ്റസ</p>
@@ -110,7 +110,7 @@ header{background:white;padding:10px 16px;display:flex;justify-content:space-bet
 
 <div id="students" class="section">
 <div class="card">
-<h3 style="color:#0e5c35;font-size:14px">👨‍🎓 സ്റ്റുഡന്റ്സ് വിഭാഗം</h3>
+<h3 style="color:#0e5c35;font-size:14px">👨🎓 സ്റ്റുഡന്റ്സ് വിഭാഗം</h3>
 [7/16/2026 11:07 PM] Mashood Thennala: <p style="font-size:11px;color:#666;margin-top:6px">എഡിറ്റ് ബട്ടൺ അമർത്തി സ്റ്റുഡന്റ്സ് വിവരങ്ങൾ ചേർക്കാം</p>
 </div>
 <div style="display:flex;justify-content:space-between;margin-bottom:8px"><h4 style="font-size:13px">ക്ലാസുകൾ / വിഭാഗങ്ങൾ</h4><button onclick="addStudent()" style="padding:5px 10px;background:#0e5c35;color:white;border:none;border-radius:14px;cursor:pointer;font-size:10px">+ വിഭാഗം ചേർക്കുക</button></div>
@@ -128,7 +128,7 @@ header{background:white;padding:10px 16px;display:flex;justify-content:space-bet
 <p style="font-size:11px;color:#666;margin:6px 0 10px">Chrome-ൽ തുറന്നാൽ 100% വർക്ക് ആകും</p>
 
 <button onclick="document.getElementById('fileInput').click()" class="upload-btn">
-📷 ഇവിടെ ക്ലിക്ക് ചെയ്ത് ഫോട്ടോ / വീഡിയോ അപ്‌ലോഡ് ചെയ്യുക
+📷 ഇവിടെ ക്ലിക്ക് ചെയ്ത് ഫോട്ടോ / വീഡിയോ അപ്ലോഡ് ചെയ്യുക
 </button>
 <input type="file" id="fileInput" multiple accept="image/*,video/*" style="display:none">
 
@@ -181,10 +181,10 @@ function doLogin(){document.getElementById('login').style.display='none';documen
 function openTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
 function showStatus(m,ok=true){const s=document.getElementById('status');s.textContent=m;s.className='status '+(ok?'ok':'err');setTimeout(()=>s.className='status',3000)}
 [7/16/2026 11:07 PM] Mashood Thennala: function render(){
- document.getElementById('mgmtGrid').innerHTML='';data.mgmt.forEach((m,i)=>{document.getElementById('mgmtGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('mgmt',${i})">✏️</button><div class="avatar">👤</div><span class="badge">${m.role}</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4></div>});
- document.getElementById('teachGrid').innerHTML='';data.teach.forEach((m,i)=>{document.getElementById('teachGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('teach',${i})">✏️</button><div class="avatar">📚</div><span class="badge">ഉസ്താദ്</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4><p style="font-size:9px;color:#666">${m.role}</p></div>});
- document.getElementById('studGrid').innerHTML='';data.stud.forEach((m,i)=>{document.getElementById('studGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('stud',${i})">✏️</button><div class="avatar">🎓</div><h4 style="font-size:11px">${m.name}</h4><p style="font-size:10px;color:#0e5c35;font-weight:600">${m.role}</p></div>});
- document.getElementById('awardGrid').innerHTML='';data.awards.forEach((m,i)=>{document.getElementById('awardGrid').innerHTML+=<div class="card"><button class="edit-icon" onclick="editItem('awards',${i})">✏️</button><h4 style="font-size:12px">🏆 ${m.name}</h4><p style="font-size:10px;color:#666">${m.role}</p></div>});
+ document.getElementById('mgmtGrid').innerHTML='';data.mgmt.forEach((m,i)=>{document.getElementById('mgmtGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('mgmt',${i})">✏</button><div class="avatar">👤</div><span class="badge">${m.role}</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4></div>});
+ document.getElementById('teachGrid').innerHTML='';data.teach.forEach((m,i)=>{document.getElementById('teachGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('teach',${i})">✏</button><div class="avatar">📚</div><span class="badge">ഉസ്താദ്</span><h4 style="font-size:11px;margin-top:4px">${m.name}</h4><p style="font-size:9px;color:#666">${m.role}</p></div>});
+ document.getElementById('studGrid').innerHTML='';data.stud.forEach((m,i)=>{document.getElementById('studGrid').innerHTML+=<div class="card person-card"><button class="edit-icon" onclick="editItem('stud',${i})">✏</button><div class="avatar">🎓</div><h4 style="font-size:11px">${m.name}</h4><p style="font-size:10px;color:#0e5c35;font-weight:600">${m.role}</p></div>});
+ document.getElementById('awardGrid').innerHTML='';data.awards.forEach((m,i)=>{document.getElementById('awardGrid').innerHTML+=<div class="card"><button class="edit-icon" onclick="editItem('awards',${i})">✏</button><h4 style="font-size:12px">🏆 ${m.name}</h4><p style="font-size:10px;color:#666">${m.role}</p></div>});
  document.body.classList.add('edit-mode');
 }
 function editItem(t,i){currentEdit={type:t,idx:i};const it=data[t][i];openModal('എഡിറ്റ്',[{label:'പേര്',id:'f1',value:it.name},{label:'വിവരം',id:'f2',value:it.role}])}
@@ -204,13 +204,13 @@ function addToGrid(src,type){
  const grid=document.getElementById('galGrid');
  const div=document.createElement('div');div.className='gallery-item';
  div.innerHTML=(type==='video'?<video src="${src}" controls playsinline style="width:100%;height:100%;object-fit:cover"></video>:<img src="${src}" style="width:100%;height:100%;object-fit:cover">)+<button class="del" onclick="this.parentElement.remove();updateCount()">✕</button>;
-[7/16/2026 11:07 PM] Mashood Thennala: grid.prepend(div);
+ grid.prepend(div);
  updateCount();
 }
 function updateCount(){document.getElementById('count').innerText=document.getElementById('galGrid').children.length}
 function handleFiles(files){
  if(!files||files.length===0)return;
- showStatus(files.length+' ഫയൽ അപ്‌ലോഡ് ചെയ്യുന്നു...',true);
+ showStatus(files.length+' ഫയൽ അപ്ലോഡ് ചെയ്യുന്നു...',true);
  Array.from(files).forEach(file=>{
   const reader=new FileReader();const isVideo=file.type.startsWith('video');
   reader.onload=e=>{
@@ -222,7 +222,7 @@ function handleFiles(files){
   };
   reader.readAsDataURL(file);
  });
- setTimeout(()=>showStatus('✅ അപ്‌ലോഡ് ആയി!',true),800);
+ setTimeout(()=>showStatus('✅ അപ്ലോഡ് ആയി!',true),800);
 }
 function clearGallery(){if(confirm('Clear gallery?')){galleryData=[];localStorage.removeItem('ds_complete_gallery');document.getElementById('galGrid').innerHTML='';updateCount()}}
 function saveLS(){localStorage.setItem('ds_complete_data',JSON.stringify(data));localStorage.setItem('ds_complete_addr',document.getElementById('addrContent').innerHTML);localStorage.setItem('ds_complete_gallery',JSON.stringify(galleryData))}
