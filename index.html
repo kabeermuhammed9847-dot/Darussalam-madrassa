@@ -1,336 +1,176 @@
 <!DOCTYPE html>
 <html lang="ml">
-<head>
+<head><!-- PLAYABLE_TOUCH_PATCH_V1 --><script>
+(function() {
+  if (window.__playableTouchPatchInstalled) return;
+  window.__playableTouchPatchInstalled = true;
+  var origAdd = EventTarget.prototype.addEventListener;
+  var blockedTypes = { touchstart: 1, touchmove: 1, wheel: 1 };
+  EventTarget.prototype.addEventListener = function(type, listener, options) {
+    if (blockedTypes[type]) {
+      if (options === undefined || options === null) {
+        options = { passive: true };
+      } else if (typeof options === 'boolean') {
+        options = { capture: options, passive: true };
+      } else {
+        options = Object.assign({}, options, { passive: true });
+      }
+    }
+    return origAdd.call(this, type, listener, options);
+  };
+})();
+</script><script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ - COMPLETE FIXED</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Malayalam',sans-serif}
-body{background:#f6f8f5;color:#222}
-:root{--green:#0e5c35;--green2:#1a8a4a;--gold:#c9a227;--light:#e8f5e9}
-.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e5c35,#1a8a4a 60%,#c9a227 100%);padding:20px}
-.login-card{background:white;padding:32px;border-radius:20px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-.login-card input{width:100%;padding:13px 14px;border:2px solid #e5e5e5;border-radius:10px;margin:6px 0;font-size:14px}
-.login-card button{width:100%;padding:13px;background:var(--green);color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:8px;font-size:14px}
-#main{display:none}
-header{background:white;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.06);flex-wrap:wrap;gap:6px}
-.logo{font-weight:800;color:var(--green);font-size:16px;line-height:1.1} .logo small{color:var(--gold);font-size:11px;display:block}
-.hero{background:linear-gradient(135deg,#0e5c35,#0a3d23);color:white;padding:32px 20px;text-align:center}
-.hero h1{font-size:22px} .hero p{opacity:0.9;margin-top:4px;font-size:13px}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#eef3ec;position:sticky;top:56px;z-index:90;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs button{padding:9px 14px;border:none;background:white;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap;flex-shrink:0;transition:0.2s}
-.tabs button.active{background:var(--green);color:white;box-shadow:0 4px 10px rgba(14,92,53,0.3)}
-.container{max-width:1100px;margin:0 auto;padding:12px}
-.section{display:none}.section.active{display:block;animation:fadeIn 0.3s}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.card{background:white;border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.04);margin-bottom:12px;position:relative;border:1px solid #f0f0f0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px}
-.person-card{text-align:center;padding:16px 12px}
-.avatar{width:60px;height:60px;background:#e8f5e9;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:24px;border:2px solid var(--gold)}
-.badge{background:var(--light);color:var(--green);padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;display:inline-block;margin-bottom:4px}
-.edit-icon{position:absolute;top:8px;right:8px;background:var(--gold);color:white;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:12px;display:none;align-items:center;justify-content:center;z-index:2}
-body.edit-mode .edit-icon{display:flex}
-.edit-icon.del{right:38px;background:#ff3b3b}
-.upload-btn{width:100%;background:linear-gradient(135deg,var(--green),var(--green2));color:white;padding:16px;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:14px;display:block;text-align:center;box-shadow:0 6px 16px rgba(14,92,53,0.3)}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px}
-.gallery-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:1;background:#111;cursor:pointer}
-.gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover;display:block}
-.gallery-item .del{position:absolute;top:6px;right:6px;background:rgba(255,59,59,0.9);color:white;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;backdrop-filter:blur(4px)}
-.status{padding:10px 14px;border-radius:10px;margin-top:10px;font-size:12px;display:none}
-.status.ok{display:block;background:#e8f5e9;color:var(--green);border:1px solid #c8e6c9}
-.status.err{display:block;background:#ffeaea;color:#c00;border:1px solid #ffc9c9}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:white;padding:10px 18px;border-radius:20px;font-size:12px;z-index:999;display:none}
-.toast.show{display:block;animation:pop 0.3s}
-@keyframes pop{from{transform:translateX(-50%) translateY(10px)}to{transform:translateX(-50%) translateY(0)}}
-#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)}
-#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:400;align-items:center;justify-content:center;padding:20px}
-#lightbox img,#lightbox video{max-width:100%;max-height:85vh;border-radius:10px}
+body{background:#f4f6f4}
+.header{background:#0a4d26;color:white;text-align:center;padding:18px 10px;position:sticky;top:0;z-index:10}
+.header h1{font-size:24px;line-height:1.3;letter-spacing:0.3px}
+.subbar{background:white;display:flex;gap:8px;padding:10px 12px;overflow:auto;border-bottom:1px solid #e0e0e0}
+.btn{border:none;padding:8px 16px;border-radius:22px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+.btn-g{background:#0a4d26;color:white}.btn-b{background:#1877f2;color:white}.btn-l{background:#eee}
+.tabs{display:flex;gap:8px;padding:12px;background:#eaf2eb;overflow:auto}
+.tab{padding:10px 18px;border-radius:22px;border:none;background:white;font-weight:600;cursor:pointer}
+.tab.active{background:#0a4d26;color:white;box-shadow:0 4px 10px rgba(0,0,0,0.15)}
+.card{background:linear-gradient(135deg,#0a5c2f,#1e9d5a);margin:14px;border-radius:22px;padding:20px;color:white}
+.card h2{font-size:22px;line-height:1.4;margin-bottom:10px}
+.card p{font-size:14px;line-height:1.6;opacity:0.95}
+.stats{display:flex;gap:8px;margin-top:14px}
+.stat{flex:1;background:rgba(255,255,255,0.18);border-radius:14px;padding:10px;text-align:center}
+.stat b{font-size:20px;display:block}
+.section{background:white;margin:14px;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.section h3{color:#0a4d26;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.mgmt-grid{display:grid;gap:12px}
+.mgmt-item{border:1px solid #e0e0e0;border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;position:relative}
+.mgmt-item img{width:64px;height:64px;border-radius:50%;object-fit:cover;background:#eee}
+.mgmt-info{flex:1}
+.mgmt-info b{display:block;font-size:15px}
+.mgmt-info small{color:#666}
+.mgmt-actions{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.mini{padding:6px 10px;border-radius:16px;font-size:12px;border:none;cursor:pointer;font-weight:600}
+.mini.call{background:#e8f5e9;color:#0a4d26}.mini.wa{background:#25D366;color:white}.mini.edit{background:#e3f2fd;color:#1565c0}
+.form input{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px}
+.pass-wrap{position:relative}
+.pass-wrap input{padding-right:40px}
+.eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;background:none;border:none;font-size:18px}
+.upload-label{background:#0a4d26;color:white;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;display:inline-block;margin-top:6px}
+#mgmtForm{display:none;border:2px dashed #0a4d26;padding:14px;border-radius:12px;margin-bottom:12px;background:#f9fdf9}
 </style>
 </head>
 <body>
-
-<div id="login" class="login-wrap">
-<div class="login-card">
-<div style="font-size:42px">🕌</div>
-<h2 style="color:#0e5c35;margin-top:6px">ദാറുസ്സലാം മദ്റസ</h2>
-<p style="color:#666;font-size:13px;margin:4px 0 16px">തെന്നല ആലുങ്ങൽ - Complete Portal</p>
-<input id="pwd" type="password" placeholder="Password" value="darussalam123">
-<button onclick="doLogin()">🔐 പ്രവേശിക്കുക (Admin)</button>
-<button onclick="guestLogin()" style="background:#eef3ec;color:#0e5c35;margin-top:8px">👁️ Guest ആയി കാണുക</button>
-<p style="font-size:10px;color:#888;margin-top:12px">Admin Password: darussalam123</p>
-<div id="loginMsg" style="font-size:11px;color:#c00;margin-top:8px;display:none"></div>
-</div>
+<div class="header">
+  <h1>ദാറുസ്സലാം മദ്റസ<br>തെന്നല ആലുങ്ങൽ</h1>
 </div>
 
-<div id="main">
-<header>
-<div class="logo">🕌 ദാറുസ്സലാം മദ്റസ<small>തെന്നല ആലുങ്ങൽ - Complete</small></div>
-<div style="display:flex;gap:6px;align-items:center">
-<span id="modeLabel" style="font-size:10px;background:#e8f5e9;color:#0e5c35;padding:4px 8px;border-radius:10px;font-weight:700">GUEST</span>
-<button onclick="shareLink()" style="padding:7px 12px;background:#1877f2;color:white;border:none;border-radius:8px;cursor:pointer;font-size:11px">🔗 Share</button>
-<button onclick="saveAll()" style="padding:7px 12px;background:#0e5c35;color:white;border:none;border-radius:8px;cursor:pointer;font-size:11px">💾 Save</button>
-<button onclick="logout()" style="padding:7px 10px;background:#eee;color:#333;border:none;border-radius:8px;cursor:pointer;font-size:11px">Logout</button>
-</div>
-</header>
-
-<div class="hero"><h1>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ</h1><p>മലപ്പുറം ജില്ല • വിശുദ്ധ ഖുർആനിന്റെയും സുന്നത്തിന്റെയും വെളിച്ചത്തിൽ</p></div>
-
-<div class="tabs" id="tabs">
-<button onclick="openTab('home',this)" class="active">🏠 ഹോം</button>
-<button onclick="openTab('address',this)">📍 അഡ്രസ്</button>
-<button onclick="openTab('management',this)">👥 മാനേജ്മെന്റ്</button>
-<button onclick="openTab('teachers',this)">📚 ടീച്ചേഴ്സ്</button>
-<button onclick="openTab('students',this)">🎓 സ്റ്റുഡന്റ്സ്</button>
-<button onclick="openTab('awards',this)">🏆 അവാർഡ്</button>
-<button onclick="openTab('gallery',this)">📸 ഗാലറി</button>
+<div class="subbar">
+  <button class="btn btn-g">ADMIN</button>
+  <button class="btn btn-b">🔗 Share</button>
+  <button class="btn btn-g">💾 Save</button>
+  <button class="btn btn-l">Logout</button>
 </div>
 
-<div class="container">
-
-<div id="home" class="section active">
-<div class="card" style="background:linear-gradient(135deg,#0e5c35,#1a8a4a);color:white;border:none">
-<h2 style="color:white">അസ്സലാമു അലൈക്കും വറഹ്മത്തുല്ലാഹി വബറകാതുഹു</h2>
-<p style="margin-top:10px;line-height:1.7;font-size:13px">ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങലിലേക്ക് സ്വാഗതം. വിശുദ്ധ ഖുർആനിന്റെയും തിരുസുന്നത്തിന്റെയും അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്ന വിദ്യാഭ്യാസ സ്ഥാപനം. അറിവും അച്ചടക്കവും സംസ്കാരവും ഉള്ള തലമുറയെ വാർത്തെടുക്കുക എന്നതാണ് ലക്ഷ്യം.</p>
-<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
-<div style="background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:10px;text-align:center;min-width:80px"><b id="cMgmt" style="font-size:16px">4</b><br><small style="font-size:11px">മാനേജ്മെന്റ്</small></div>
-<div style="background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:10px;text-align:center;min-width:80px"><b id="cTeach" style="font-size:16px">6</b><br><small style="font-size:11px">ഉസ്താദുമാർ</small></div>
-<div style="background:rgba(255,255,255,0.15);padding:8px 14px;border-radius:10px;text-align:center;min-width:80px"><b id="cStud" style="font-size:16px">135</b><br><small style="font-size:11px">വിദ്യാർത്ഥികൾ</small></div>
-</div>
-</div>
-<div class="card"><h3 style="color:#0e5c35;font-size:14px">✨ ഞങ്ങളുടെ ലക്ഷ്യം</h3><p style="font-size:13px;color:#555;line-height:1.7;margin-top:8px">ദീനീ വിദ്യാഭ്യാസത്തോടൊപ്പം ഭൗതിക വിദ്യാഭ്യാസവും നൽകി സൽസ്വഭാവമുള്ള പൗരന്മാരെ സൃഷ്ടിക്കുക. ഖുർആൻ പഠനം, ഹിഫ്സ്, ദർസ്, ബാലപാഠം എന്നിവ സജീവമായി നടന്നുവരുന്നു.</p></div>
+<div class="tabs">
+  <button class="tab active" onclick="showTab('home')">🏠 ഹോം</button>
+  <button class="tab" onclick="showTab('address')">📍 അഡ്രസ്</button>
+  <button class="tab" onclick="showTab('mgmt')">👥 മാനേജ്മെന്റ്</button>
 </div>
 
-<div id="address" class="section">
-<div class="card" id="addrCard">
-<button class="edit-icon" onclick="editAddress()">✏️</button>
-<h3 style="color:#0e5c35;font-size:15px">📍 അഡ്രസ് വിവരങ്ങൾ</h3>
-<div id="addrContent" style="margin-top:12px;line-height:2;font-size:13px">
-<p><b>സ്ഥാപനം:</b> ദാറുസ്സലാം മദ്റസ</p>
-<p><b>സ്ഥലം:</b> തെന്നല ആലുങ്ങൽ, തെന്നല, മലപ്പുറം ജില്ല, കേരളം</p>
-<p><b>പിൻകോഡ്:</b> 676508</p>
-<p><b>ഫോൺ:</b> +91 9XXXXXXXXX</p>
-<p><b>സമയം:</b> രാവിലെ 8 AM - വൈകിട്ട് 5 PM</p>
-</div>
-</div>
-<div class="card"><h4 style="font-size:13px">🗺️ Google Map</h4><p style="font-size:11px;color:#888;margin-top:4px">Map link add ചെയ്യാൻ Address edit ചെയ്യുക</p></div>
-</div>
-
-<div id="management" class="section">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="color:#0e5c35;font-size:15px">👥 മാനേജ്മെന്റ് കമ്മിറ്റി</h3><button onclick="addMember('mgmt')" class="admin-only" style="padding:6px 12px;background:#0e5c35;color:white;border:none;border-radius:18px;cursor:pointer;font-size:11px">+ ചേർക്കുക</button></div>
-<div class="grid" id="mgmtGrid"></div>
-</div>
-
-<div id="teachers" class="section">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="color:#0e5c35;font-size:15px">📚 ഉസ്താദുമാർ</h3><button onclick="addMember('teach')" class="admin-only" style="padding:6px 12px;background:#0e5c35;color:white;border:none;border-radius:18px;cursor:pointer;font-size:11px">+ ചേർക്കുക</button></div>
-<div class="grid" id="teachGrid"></div>
-</div>
-
-<div id="students" class="section">
-<div class="card"><h3 style="color:#0e5c35;font-size:15px">🎓 സ്റ്റുഡന്റ്സ് വിഭാഗങ്ങൾ</h3><p style="font-size:11px;color:#666;margin-top:6px">ക്ലാസുകൾ തിരിച്ചുള്ള വിദ്യാർത്ഥികളുടെ വിവരം</p></div>
-<div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0"><h4 style="font-size:13px">വിഭാഗങ്ങൾ</h4><button onclick="addStudent()" class="admin-only" style="padding:6px 12px;background:#0e5c35;color:white;border:none;border-radius:18px;cursor:pointer;font-size:11px">+ വിഭാഗം ചേർക്കുക</button></div>
-<div class="grid" id="studGrid"></div>
-</div>
-
-<div id="awards" class="section">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="color:#0e5c35;font-size:15px">🏆 അവാർഡുകളും അംഗീകാരങ്ങളും</h3><button onclick="addAward()" class="admin-only" style="padding:6px 12px;background:#c9a227;color:white;border:none;border-radius:18px;cursor:pointer;font-size:11px">+ ചേർക്കുക</button></div>
-<div class="grid" id="awardGrid"></div>
-</div>
-
-<div id="gallery" class="section">
+<div id="homeTab">
 <div class="card">
-<h3 style="color:#0e5c35;font-size:15px">📸 ഫോട്ടോ & വീഡിയോ ഗാലറി</h3>
-<p style="font-size:11px;color:#666;margin:6px 0 14px">എല്ലാ ബ്രൗസറിലും 100% work ആകും. Photo auto-compress ആകും.</p>
-<button onclick="document.getElementById('fileInput').click()" class="upload-btn admin-only">📷 ഫോട്ടോ / വീഡിയോ അപ്ലോഡ് ചെയ്യുക</button>
-<input type="file" id="fileInput" multiple accept="image/*,video/*" style="display:none">
-<div id="status" class="status"></div>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><h4 style="font-size:13px">ഗാലറി (<span id="count">0</span>)</h4><button onclick="clearGallery()" class="admin-only" style="font-size:10px;padding:5px 10px;background:#ffeaea;color:#c00;border:none;border-radius:10px;cursor:pointer">🗑️ Clear All</button></div>
-<div class="gallery-grid" id="galGrid"></div>
-<div id="emptyGal" style="text-align:center;padding:30px;color:#999;font-size:12px">ഇതുവരെ ഫോട്ടോകളില്ല. അപ്ലോഡ് ചെയ്യുക.</div>
+  <h2>അസ്സലാമു അലൈക്കും വറഹ്മത്തുല്ലാഹി വബറകാതുഹു</h2>
+  <p>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങലിലേക്ക് സ്വാഗതം. വിശുദ്ധ ഖുർആനിന്റെയും തിരുസുന്നത്തിന്റെയും അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്ന വിദ്യാഭ്യാസ സ്ഥാപനം.</p>
+  <div class="stats">
+    <div class="stat"><b>4</b>മാനേജ്മെന്റ്</div>
+    <div class="stat"><b>6</b>ഉസ്താദുമാർ</div>
+    <div class="stat"><b>135</b>വിദ്യാർത്ഥികൾ</div>
+  </div>
 </div>
 </div>
 
-</div>
-</div>
-
-<div id="modal">
-<div style="background:white;padding:22px;border-radius:18px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
-<h3 id="modalTitle" style="font-size:15px;color:#0e5c35">എഡിറ്റ്</h3>
-<div id="modalFields" style="margin-top:14px"></div>
-<div style="display:flex;gap:8px;margin-top:16px"><button onclick="saveModal()" style="background:#0e5c35;color:white;flex:1;padding:10px;border:none;border-radius:10px;cursor:pointer;font-weight:700">💾 സേവ്</button><button onclick="closeModal()" style="background:#f0f0f0;flex:1;padding:10px;border:none;border-radius:10px;cursor:pointer">Cancel</button></div>
-</div>
+<div id="addressTab" class="section" style="display:none">
+  <h3>📍 അഡ്രസ് വിവരങ്ങൾ <button class="mini edit" onclick="toggleAddr()">✏️ എഡിറ്റ്</button></h3>
+  <div id="addrView"></div>
+  <div id="addrEdit" style="display:none" class="form">
+    <input id="a1" placeholder="സ്ഥാപനം"><input id="a2" placeholder="സ്ഥലം"><input id="a3" placeholder="പിൻകോഡ്"><input id="a4" placeholder="ഫോൺ"><input id="a5" placeholder="സമയം"><input id="a6" placeholder="Google Map Link">
+    <button class="btn btn-g" onclick="saveAddr()">സേവ്</button> <button class="btn btn-l" onclick="toggleAddr()">റദ്ദാക്കുക</button>
+  </div>
 </div>
 
-<div id="lightbox" onclick="closeLightbox()"><div id="lbContent"></div><button style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.2);color:white;border:none;border-radius:50%;width:36px;height:36px;font-size:18px">✕</button></div>
+<div id="mgmtTab" class="section" style="display:none">
+  <h3>👥 മാനേജ്മെന്റ് <button class="btn btn-g" style="font-size:12px;padding:6px 12px" onclick="openMgmtForm()">+ Add</button></h3>
+  
+  <div id="mgmtForm" class="form">
+    <input id="mName" placeholder="പേര്">
+    <input id="mRole" placeholder="സ്ഥാനം (ഉദാ: പ്രസിഡന്റ്)">
+    <input id="mPhone" placeholder="ഫോൺ നമ്പർ (WhatsApp)">
+    <div class="pass-wrap">
+      <input id="mPass" type="password" placeholder="പാസ്‌വേഡ്">
+      <button class="eye" onclick="togglePass()">👁️</button>
+    </div>
+    <input type="file" id="mPhotoFile" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+    <label for="mPhotoFile" class="upload-label">📸 ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക</label>
+    <img id="photoPreview" style="display:none;width:60px;height:60px;border-radius:50%;margin-left:10px;vertical-align:middle">
+    <div style="margin-top:12px"><button class="btn btn-g" onclick="saveMgmt()">സേവ് ചെയ്യുക</button> <button class="btn btn-l" onclick="closeMgmtForm()">റദ്ദാക്കുക</button></div>
+  </div>
 
-<div id="toast" class="toast"></div>
+  <div id="mgmtList" class="mgmt-grid"></div>
+</div>
 
 <script>
-let data={
- mgmt:[
-  {name:'എം ആലി ബാവ ഹാജി',role:'പ്രസിഡണ്ട്'},
-  {name:'വി പി അബ്ദുശുകൂർ ഫൈസി',role:'സെക്രട്ടറി'},
-  {name:'കെ ടി നാസർ',role:'ട്രഷറർ'},
-  {name:'മുഹമ്മദ് കബീർ ഹൈത്തമി തെന്നല',role:'സ്വദർ ഉസ്താദ്'}
- ],
- teach:[
-  {name:'അബ്ദുൽ അസീസ് ഫൈസി കുണ്ടൂർ',role:'മുദരിസ്'},
-  {name:'മുഹമ്മദ് സ്വാദിഖ് ഫൈസി കുറുകത്താണി',role:'മുദരിസ്'},
-  {name:'മുഹമ്മദ് സലാഹുദ്ധീൻ ഫൈസി തെന്നല',role:'മുദരിസ്'},
-  {name:'മുഹമ്മദ് നാഫിഹ് ഫൈസി ചെമ്മാട്',role:'മുദരിസ്'},
-  {name:'മുഹമ്മദ് നസീം ഫൈസി പുതുപ്പറമ്പ്',role:'മുദരിസ്'},
-  {name:'മുഹമ്മദ് ഇർഫാൻ ഹുദവി പൂക്കിപ്പറമ്പ്',role:'മുദരിസ്'}
- ],
- stud:[
-  {name:'ഹിഫ്സ് വിഭാഗം',role:'45 വിദ്യാർത്ഥികൾ'},
-  {name:'ദർസ് വിഭാഗം',role:'60 വിദ്യാർത്ഥികൾ'},
-  {name:'ബാലപാഠം',role:'30 വിദ്യാർത്ഥികൾ'}
- ],
- awards:[
-  {name:'മികച്ച മദ്റസ അംഗീകാരം',role:'2024 - തെന്നല'}
- ]
-};
-let galleryData=[];
-let currentEdit=null;
-let isAdmin=false;
+let tempPhoto='';
+function showTab(t){
+ document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+ document.getElementById('homeTab').style.display='none';
+ document.getElementById('addressTab').style.display='none';
+ document.getElementById('mgmtTab').style.display='none';
+ if(t==='home'){document.getElementById('homeTab').style.display='block'; document.querySelectorAll('.tab')[0].classList.add('active')}
+ if(t==='address'){document.getElementById('addressTab').style.display='block'; document.querySelectorAll('.tab')[1].classList.add('active')}
+ if(t==='mgmt'){document.getElementById('mgmtTab').style.display='block'; document.querySelectorAll('.tab')[2].classList.add('active'); loadMgmt();}
+}
+const addrDefault={a1:"ദാറുസ്സലാം മദ്റസ",a2:"തെന്നല ആലുങ്ങൽ, മലപ്പുറം",a3:"676508",a4:"+91 9XXXXXXXXX",a5:"8 AM - 5 PM",a6:""};
+function loadAddr(){const d=JSON.parse(localStorage.getItem('d_addr')||'null')||addrDefault; document.getElementById('addrView').innerHTML=`<p><b>സ്ഥാപനം:</b> ${d.a1}</p><p><b>സ്ഥലം:</b> ${d.a2}</p><p><b>പിൻകോഡ്:</b> ${d.a3}</p><p><b>ഫോൺ:</b> ${d.a4}</p><p><b>സമയം:</b> ${d.a5}</p><p><a href="${d.a6}" target="_blank">${d.a6?'Map തുറക്കുക':'Map ലിങ്ക് ഇല്ല'}</a></p>`; a1.value=d.a1;a2.value=d.a2;a3.value=d.a3;a4.value=d.a4;a5.value=d.a5;a6.value=d.a6;}
+function toggleAddr(){const v=document.getElementById('addrView'),e=document.getElementById('addrEdit'); if(e.style.display==='none'){e.style.display='block';v.style.display='none'}else{e.style.display='none';v.style.display='block'}}
+function saveAddr(){const d={a1:a1.value,a2:a2.value,a3:a3.value,a4:a4.value,a5:a5.value,a6:a6.value};localStorage.setItem('d_addr',JSON.stringify(d));loadAddr();toggleAddr();alert('സേവ് ചെയ്തു')}
 
-function doLogin(){
- const p=document.getElementById('pwd').value;
- if(p==='darussalam123'){isAdmin=true;document.getElementById('login').style.display='none';document.getElementById('main').style.display='block';document.body.classList.add('edit-mode');document.getElementById('modeLabel').textContent='ADMIN';document.getElementById('modeLabel').style.background='#0e5c35';document.getElementById('modeLabel').style.color='white';loadAll();toast('✅ Admin login success');}
- else{document.getElementById('loginMsg').style.display='block';document.getElementById('loginMsg').textContent='Password തെറ്റാണ്! darussalam123 എന്ന് അടിക്കുക';}
+let editIndex=-1;
+function openMgmtForm(i=-1){
+ document.getElementById('mgmtForm').style.display='block';
+ if(i>=0){const list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); const m=list[i]; mName.value=m.name; mRole.value=m.role; mPhone.value=m.phone; mPass.value=m.pass; tempPhoto=m.photo; photoPreview.src=m.photo; photoPreview.style.display='inline-block'; editIndex=i;}
+ else{mName.value='';mRole.value='';mPhone.value='';mPass.value='';tempPhoto='';photoPreview.style.display='none';editIndex=-1;}
 }
-function guestLogin(){isAdmin=false;document.getElementById('login').style.display='none';document.getElementById('main').style.display='block';document.body.classList.remove('edit-mode');document.getElementById('modeLabel').textContent='GUEST';loadAll();}
-function logout(){document.getElementById('main').style.display='none';document.getElementById('login').style.display='flex';document.body.classList.remove('edit-mode');isAdmin=false;}
-function openTab(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function showStatus(m,ok=true){const s=document.getElementById('status');s.textContent=m;s.className='status '+(ok?'ok':'err');setTimeout(()=>s.className='status',4000)}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-
-function render(){
- const mgmtEl=document.getElementById('mgmtGrid');mgmtEl.innerHTML='';
- data.mgmt.forEach((m,i)=>{
-  mgmtEl.innerHTML+=`<div class="card person-card"><button class="edit-icon" onclick="editItem('mgmt',${i})">✏️</button><button class="edit-icon del" onclick="deleteItem('mgmt',${i})">🗑️</button><div class="avatar">👤</div><span class="badge">${m.role}</span><h4 style="font-size:12px;margin-top:6px">${m.name}</h4></div>`;
- });
- const teachEl=document.getElementById('teachGrid');teachEl.innerHTML='';
- data.teach.forEach((m,i)=>{
-  teachEl.innerHTML+=`<div class="card person-card"><button class="edit-icon" onclick="editItem('teach',${i})">✏️</button><button class="edit-icon del" onclick="deleteItem('teach',${i})">🗑️</button><div class="avatar">📚</div><span class="badge">ഉസ്താദ്</span><h4 style="font-size:12px;margin-top:6px">${m.name}</h4><p style="font-size:10px;color:#666;margin-top:2px">${m.role}</p></div>`;
- });
- const studEl=document.getElementById('studGrid');studEl.innerHTML='';
- data.stud.forEach((m,i)=>{
-  studEl.innerHTML+=`<div class="card person-card"><button class="edit-icon" onclick="editItem('stud',${i})">✏️</button><button class="edit-icon del" onclick="deleteItem('stud',${i})">🗑️</button><div class="avatar">🎓</div><h4 style="font-size:12px">${m.name}</h4><p style="font-size:11px;color:#0e5c35;font-weight:700;margin-top:4px">${m.role}</p></div>`;
- });
- const awardEl=document.getElementById('awardGrid');awardEl.innerHTML='';
- data.awards.forEach((m,i)=>{
-  awardEl.innerHTML+=`<div class="card"><button class="edit-icon" onclick="editItem('awards',${i})">✏️</button><button class="edit-icon del" onclick="deleteItem('awards',${i})">🗑️</button><h4 style="font-size:13px">🏆 ${m.name}</h4><p style="font-size:11px;color:#666;margin-top:4px">${m.role}</p></div>`;
- });
- document.getElementById('cMgmt').textContent=data.mgmt.length;
- document.getElementById('cTeach').textContent=data.teach.length;
- document.getElementById('cStud').textContent=data.stud.reduce((s,x)=>{let n=parseInt(x.role)||0;return s+n;},0) || data.stud.length;
+function closeMgmtForm(){document.getElementById('mgmtForm').style.display='none'}
+function previewPhoto(e){const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=function(ev){tempPhoto=ev.target.result; photoPreview.src=tempPhoto; photoPreview.style.display='inline-block';}; reader.readAsDataURL(file);}
+function saveMgmt(){
+ if(!mName.value) return alert('പേര് നൽകുക');
+ let list=JSON.parse(localStorage.getItem('d_mgmt')||'[]');
+ const obj={name:mName.value, role:mRole.value, phone:mPhone.value, pass:mPass.value, photo:tempPhoto||'https://via.placeholder.com/100?text=No+Photo'};
+ if(editIndex>=0) list[editIndex]=obj; else list.push(obj);
+ localStorage.setItem('d_mgmt',JSON.stringify(list));
+ closeMgmtForm(); loadMgmt();
 }
-function editItem(t,i){if(!isAdmin)return toast('Admin login വേണം');currentEdit={type:t,idx:i};const it=data[t][i];openModal('എഡിറ്റ് ചെയ്യുക',[{label:'പേര്',id:'f1',value:it.name},{label:'സ്ഥാനം / വിവരം',id:'f2',value:it.role}]);}
-function deleteItem(t,i){if(!isAdmin)return;if(!confirm('ഇത് delete ചെയ്യണോ?'))return;data[t].splice(i,1);render();saveLS();toast('🗑️ Deleted');}
-function addMember(t){if(!isAdmin)return toast('Admin ആയി login ചെയ്യൂ');currentEdit={type:t,idx:-1};openModal('പുതിയത് ചേർക്കുക',[{label:'പേര്',id:'f1',value:''},{label:'സ്ഥാനം',id:'f2',value:''}]);}
-function addStudent(){if(!isAdmin)return toast('Admin ആയി login ചെയ്യൂ');currentEdit={type:'stud',idx:-1};openModal('വിഭാഗം ചേർക്കുക',[{label:'വിഭാഗം പേര്',id:'f1',value:''},{label:'എണ്ണം / വിവരം',id:'f2',value:''}]);}
-function addAward(){if(!isAdmin)return toast('Admin ആയി login ചെയ്യൂ');currentEdit={type:'awards',idx:-1};openModal('അവാർഡ് ചേർക്കുക',[{label:'അവാർഡ് പേര്',id:'f1',value:''},{label:'വർഷം / വിവരം',id:'f2',value:''}]);}
-function editAddress(){if(!isAdmin)return toast('Admin login വേണം');openModal('അഡ്രസ് എഡിറ്റ്',[{label:'വിവരങ്ങൾ (ഓരോ വരിയിലും)',id:'f1',value:document.getElementById('addrContent').innerText,type:'textarea'}]);currentEdit={type:'address'};}
-
-function openModal(t,fields){
- document.getElementById('modalTitle').innerText=t;
- const cont=document.getElementById('modalFields');cont.innerHTML='';
- fields.forEach(f=>{
-  cont.innerHTML+=`<label style="font-size:11px;font-weight:700;color:#333;display:block;margin-bottom:4px">${f.label}</label>${f.type==='textarea'?`<textarea id="${f.id}" rows="5" style="width:100%;padding:10px;border:1.5px solid #ddd;border-radius:10px;margin-bottom:12px;font-size:13px">${f.value}</textarea>`:`<input id="${f.id}" value="${f.value}" style="width:100%;padding:10px;border:1.5px solid #ddd;border-radius:10px;margin-bottom:12px;font-size:13px">`}`;
- });
- document.getElementById('modal').style.display='flex';
+function loadMgmt(){
+ const list=JSON.parse(localStorage.getItem('d_mgmt')||'[]');
+ const c=document.getElementById('mgmtList');
+ if(list.length===0){c.innerHTML='<p style="color:#777">ഇതുവരെ ആരും ചേർത്തിട്ടില്ല. Add ബട്ടൺ അമർത്തി ചേർക്കുക.</p>'; return;}
+ c.innerHTML=list.map((m,i)=>`
+  <div class="mgmt-item">
+    <img src="${m.photo}">
+    <div class="mgmt-info"><b>${m.name}</b><small>${m.role}</small><br><small>${m.phone}</small>
+      <div class="mgmt-actions">
+        <a href="tel:${m.phone}" style="text-decoration:none"><button class="mini call">📞 Call</button></a>
+        <a href="https://wa.me/${m.phone.replace(/[^0-9]/g,'')}" target="_blank" style="text-decoration:none"><button class="mini wa">💬 WhatsApp</button></a>
+        <button class="mini edit" onclick="openMgmtForm(${i})">✏️</button>
+        <button class="mini" style="background:#ffebee;color:#c62828" onclick="delMgmt(${i})">🗑️</button>
+      </div>
+    </div>
+  </div>`).join('');
 }
-function closeModal(){document.getElementById('modal').style.display='none';}
-function saveModal(){
- if(currentEdit.type==='address'){
-  const val=document.getElementById('f1').value;
-  document.getElementById('addrContent').innerHTML=val.split('\n').filter(l=>l.trim()).map(l=>`<p>${l}</p>`).join('');
- } else {
-  const v1=document.getElementById('f1').value.trim(),v2=document.getElementById('f2').value.trim();
-  if(!v1)return toast('പേര് നൽകൂ');
-  if(currentEdit.idx===-1)data[currentEdit.type].push({name:v1,role:v2});
-  else data[currentEdit.type][currentEdit.idx]={name:v1,role:v2};
-  render();
- }
- closeModal();saveLS();toast('✅ Saved');
-}
-
-function compressImage(file){
- return new Promise(res=>{
-  const reader=new FileReader();
-  reader.onload=e=>{
-   const img=new Image();
-   img.onload=()=>{
-    const canvas=document.createElement('canvas');
-    let w=img.width,h=img.height;
-    const max=900;
-    if(w>max||h>max){if(w>h){h=Math.round(h*max/w);w=max;}else{w=Math.round(w*max/h);h=max;}}
-    canvas.width=w;canvas.height=h;
-    canvas.getContext('2d').drawImage(img,0,0,w,h);
-    res(canvas.toDataURL('image/jpeg',0.7));
-   };
-   img.src=e.target.result;
-  };
-  reader.readAsDataURL(file);
- });
-}
-
-function addToGrid(src,type){
- const grid=document.getElementById('galGrid');
- const div=document.createElement('div');div.className='gallery-item';
- div.innerHTML=(type==='video'?`<video src="${src}" muted playsinline></video>`:`<img src="${src}" loading="lazy">`)+`<button class="del" onclick="event.stopPropagation();removeGallery(this,'${src}')">✕</button>`;
- div.onclick=()=>openLightbox(src,type);
- grid.prepend(div);
- updateCount();
-}
-function openLightbox(src,type){const lb=document.getElementById('lightbox');const c=document.getElementById('lbContent');c.innerHTML=type==='video'?`<video src="${src}" controls autoplay style="max-width:90vw"></video>`:`<img src="${src}">`;lb.style.display='flex';}
-function closeLightbox(){document.getElementById('lightbox').style.display='none';}
-function updateCount(){const n=document.getElementById('galGrid').children.length;document.getElementById('count').innerText=n;document.getElementById('emptyGal').style.display=n?'none':'block';}
-async function handleFiles(files){
- if(!files||files.length===0)return;
- if(!isAdmin)return toast('Upload ചെയ്യാൻ Admin login വേണം');
- showStatus(files.length+' ഫയൽ പ്രോസസ് ചെയ്യുന്നു...',true);
- for(const file of files){
-  try{
-   const isVideo=file.type.startsWith('video');
-   if(isVideo && file.size>12*1024*1024){toast('വീഡിയോ 12MB ൽ കൂടുതൽ, skip ചെയ്യുന്നു: '+file.name);continue;}
-   const src=isVideo? await new Promise(r=>{const fr=new FileReader();fr.onload=e=>r(e.target.result);fr.readAsDataURL(file);}): await compressImage(file);
-   addToGrid(src,isVideo?'video':'image');
-   galleryData.unshift({src,type:isVideo?'video':'image'});
-  }catch(e){console.error(e);}
- }
- saveLS();updateCount();showStatus('✅ '+files.length+' ഫയൽ അപ്ലോഡ് ആയി!',true);toast('✅ Gallery updated');
-}
-function removeGallery(btn,src){
- if(!isAdmin)return;
- if(!confirm('ഈ ഫോട്ടോ delete ചെയ്യണോ?'))return;
- btn.parentElement.remove();
- galleryData=galleryData.filter(g=>g.src!==src);
- saveLS();updateCount();toast('Deleted');
-}
-function clearGallery(){if(!isAdmin)return;if(confirm('എല്ലാ ഫോട്ടോകളും delete ചെയ്യണോ?')){galleryData=[];localStorage.removeItem('ds_v2_gallery');document.getElementById('galGrid').innerHTML='';updateCount();toast('Gallery cleared');}}
-function saveLS(){try{localStorage.setItem('ds_v2_data',JSON.stringify(data));localStorage.setItem('ds_v2_addr',document.getElementById('addrContent').innerHTML);localStorage.setItem('ds_v2_gallery',JSON.stringify(galleryData));}catch(e){if(e.name==='QuotaExceededError'){toast('Storage full! ചില ഫോട്ടോ delete ചെയ്യൂ');galleryData=galleryData.slice(0,20);localStorage.setItem('ds_v2_gallery',JSON.stringify(galleryData));}}}
-function saveAll(){saveLS();toast('✅ എല്ലാം Saved!');}
-function loadAll(){
- try{
-  const d=localStorage.getItem('ds_v2_data');if(d)data=JSON.parse(d);
-  const a=localStorage.getItem('ds_v2_addr');if(a)document.getElementById('addrContent').innerHTML=a;
-  galleryData=JSON.parse(localStorage.getItem('ds_v2_gallery')||'[]');
-  document.getElementById('galGrid').innerHTML='';
-  galleryData.slice().reverse().forEach(i=>addToGrid(i.src,i.type));
- }catch(e){console.log('load err',e)}
- updateCount();render();
-}
-function shareLink(){
- const url=window.location.href;
- if(navigator.share){navigator.share({title:'ദാറുസ്സലാം മദ്റസ',text:'ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങൽ പോർട്ടൽ',url}).catch(()=>{});}
- else{navigator.clipboard.writeText(url).then(()=>toast('Link copied!')).catch(()=>prompt('Link copy ചെയ്യുക:',url));}
-}
-document.getElementById('fileInput').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
-document.getElementById('pwd').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-window.addEventListener('DOMContentLoaded',()=>{loadAll();});
+function delMgmt(i){if(confirm('ഡിലീറ്റ് ചെയ്യണോ?')){let list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); list.splice(i,1); localStorage.setItem('d_mgmt',JSON.stringify(list)); loadMgmt();}}
+function togglePass(){const p=document.getElementById('mPass'); p.type=p.type==='password'?'text':'password';}
+loadAddr();
 </script>
 </body>
-</html> 
+</html>
