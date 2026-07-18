@@ -26,151 +26,167 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Malayalam',sans-serif}
-body{background:#f4f6f4}
-.header{background:#0a4d26;color:white;text-align:center;padding:18px 10px;position:sticky;top:0;z-index:10}
-.header h1{font-size:24px;line-height:1.3;letter-spacing:0.3px}
-.subbar{background:white;display:flex;gap:8px;padding:10px 12px;overflow:auto;border-bottom:1px solid #e0e0e0}
-.btn{border:none;padding:8px 16px;border-radius:22px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+body{background:#f2f5f2}
+.header{background:#0a4d26;color:white;text-align:center;padding:16px 10px}
+.header h1{font-size:22px;line-height:1.3}
+.subbar{background:white;display:flex;gap:8px;padding:8px 12px;overflow:auto;border-bottom:1px solid #ddd}
+.btn{border:none;padding:8px 14px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap}
 .btn-g{background:#0a4d26;color:white}.btn-b{background:#1877f2;color:white}.btn-l{background:#eee}
-.tabs{display:flex;gap:8px;padding:12px;background:#eaf2eb;overflow:auto}
-.tab{padding:10px 18px;border-radius:22px;border:none;background:white;font-weight:600;cursor:pointer}
-.tab.active{background:#0a4d26;color:white;box-shadow:0 4px 10px rgba(0,0,0,0.15)}
-.card{background:linear-gradient(135deg,#0a5c2f,#1e9d5a);margin:14px;border-radius:22px;padding:20px;color:white}
-.card h2{font-size:22px;line-height:1.4;margin-bottom:10px}
-.card p{font-size:14px;line-height:1.6;opacity:0.95}
-.stats{display:flex;gap:8px;margin-top:14px}
-.stat{flex:1;background:rgba(255,255,255,0.18);border-radius:14px;padding:10px;text-align:center}
-.stat b{font-size:20px;display:block}
-.section{background:white;margin:14px;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
-.section h3{color:#0a4d26;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.mgmt-grid{display:grid;gap:12px}
-.mgmt-item{border:1px solid #e0e0e0;border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;position:relative}
-.mgmt-item img{width:64px;height:64px;border-radius:50%;object-fit:cover;background:#eee}
-.mgmt-info{flex:1}
-.mgmt-info b{display:block;font-size:15px}
-.mgmt-info small{color:#666}
-.mgmt-actions{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
-.mini{padding:6px 10px;border-radius:16px;font-size:12px;border:none;cursor:pointer;font-weight:600}
-.mini.call{background:#e8f5e9;color:#0a4d26}.mini.wa{background:#25D366;color:white}.mini.edit{background:#e3f2fd;color:#1565c0}
-.form input{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:8px}
-.pass-wrap{position:relative}
-.pass-wrap input{padding-right:40px}
-.eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;background:none;border:none;font-size:18px}
-.upload-label{background:#0a4d26;color:white;padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;display:inline-block;margin-top:6px}
-#mgmtForm{display:none;border:2px dashed #0a4d26;padding:14px;border-radius:12px;margin-bottom:12px;background:#f9fdf9}
+.tabs{display:flex;gap:8px;padding:10px;background:#e8f0e9;overflow:auto;position:sticky;top:0;z-index:5}
+.tab{padding:8px 14px;border-radius:20px;border:none;background:white;font-weight:600;cursor:pointer;font-size:13px;white-space:nowrap}
+.tab.active{background:#0a4d26;color:white}
+.card{background:linear-gradient(135deg,#0a5c2f,#1ea362);margin:12px;border-radius:20px;padding:18px;color:white}
+.section{background:white;margin:12px;border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.section h3{color:#0a4d26;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;font-size:16px}
+.form input,.form select,.form textarea{width:100%;padding:9px;margin:5px 0 10px;border:1px solid #ccc;border-radius:8px;font-size:14px}
+.mini{padding:5px 10px;border-radius:14px;font-size:11px;border:none;cursor:pointer;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+th,td{border:1px solid #ddd;padding:6px;text-align:left}
+th{background:#0a4d26;color:white}
+.pass-wrap{position:relative}.eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;cursor:pointer}
+.mgmt-item{display:flex;gap:10px;border:1px solid #e0e0e0;border-radius:12px;padding:10px;margin-bottom:8px}
+.mgmt-item img{width:50px;height:50px;border-radius:50%;object-fit:cover}
+.badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.badge-p{background:#e8f5e9;color:#2e7d32}.badge-a{background:#ffebee;color:#c62828}
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>ദാറുസ്സലാം മദ്റസ<br>തെന്നല ആലുങ്ങൽ</h1>
-</div>
-
-<div class="subbar">
-  <button class="btn btn-g">ADMIN</button>
-  <button class="btn btn-b">🔗 Share</button>
-  <button class="btn btn-g">💾 Save</button>
-  <button class="btn btn-l">Logout</button>
-</div>
-
+<div class="header"><h1>ദാറുസ്സലാം മദ്റസ<br>തെന്നല ആലുങ്ങൽ</h1></div>
+<div class="subbar"><button class="btn btn-g">ADMIN</button><button class="btn btn-b">🔗 Share</button><button class="btn btn-g">💾 Save</button><button class="btn btn-l">Logout</button></div>
 <div class="tabs">
-  <button class="tab active" onclick="showTab('home')">🏠 ഹോം</button>
-  <button class="tab" onclick="showTab('address')">📍 അഡ്രസ്</button>
-  <button class="tab" onclick="showTab('mgmt')">👥 മാനേജ്മെന്റ്</button>
+<button class="tab active" onclick="showTab('home')">🏠 ഹോം</button>
+<button class="tab" onclick="showTab('address')">📍 അഡ്രസ്</button>
+<button class="tab" onclick="showTab('mgmt')">👥 മാനേജ്മെന്റ്</button>
+<button class="tab" onclick="showTab('marks')">📊 മാർക്ക് ലിസ്റ്റ്</button>
+<button class="tab" onclick="showTab('hw')">📝 ഹോം വർക്ക്</button>
+<button class="tab" onclick="showTab('att')">📅 അറ്റൻഡൻസ്</button>
 </div>
 
-<div id="homeTab">
-<div class="card">
-  <h2>അസ്സലാമു അലൈക്കും വറഹ്മത്തുല്ലാഹി വബറകാതുഹു</h2>
-  <p>ദാറുസ്സലാം മദ്റസ തെന്നല ആലുങ്ങലിലേക്ക് സ്വാഗതം. വിശുദ്ധ ഖുർആനിന്റെയും തിരുസുന്നത്തിന്റെയും അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്ന വിദ്യാഭ്യാസ സ്ഥാപനം.</p>
-  <div class="stats">
-    <div class="stat"><b>4</b>മാനേജ്മെന്റ്</div>
-    <div class="stat"><b>6</b>ഉസ്താദുമാർ</div>
-    <div class="stat"><b>135</b>വിദ്യാർത്ഥികൾ</div>
-  </div>
+<div id="home" class="tabcontent">
+<div class="card"><h2>അസ്സലാമു അലൈക്കും വറഹ്മത്തുല്ലാഹി വബറകാതുഹു</h2><p>ദാറുസ്സലാം മദ്റസയിലേക്ക് സ്വാഗതം. വിശുദ്ധ ഖുർആനിന്റെയും സുന്നത്തിന്റെയും അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്ന സ്ഥാപനം.</p></div>
+</div>
+
+<div id="address" class="section tabcontent" style="display:none">
+<h3>📍 അഡ്രസ് വിവരങ്ങൾ <button class="mini" style="background:#e3f2fd" onclick="toggleAddr()">✏️ എഡിറ്റ്</button></h3>
+<div id="addrView"></div>
+<div id="addrEdit" style="display:none" class="form">
+<input id="a1" placeholder="സ്ഥാപനം"><input id="a2" placeholder="സ്ഥലം"><input id="a3" placeholder="പിൻകോഡ്"><input id="a4" placeholder="ഫോൺ"><input id="a5" placeholder="സമയം"><input id="a6" placeholder="Map Link">
+<button class="btn btn-g" onclick="saveAddr()">സേവ്</button>
 </div>
 </div>
 
-<div id="addressTab" class="section" style="display:none">
-  <h3>📍 അഡ്രസ് വിവരങ്ങൾ <button class="mini edit" onclick="toggleAddr()">✏️ എഡിറ്റ്</button></h3>
-  <div id="addrView"></div>
-  <div id="addrEdit" style="display:none" class="form">
-    <input id="a1" placeholder="സ്ഥാപനം"><input id="a2" placeholder="സ്ഥലം"><input id="a3" placeholder="പിൻകോഡ്"><input id="a4" placeholder="ഫോൺ"><input id="a5" placeholder="സമയം"><input id="a6" placeholder="Google Map Link">
-    <button class="btn btn-g" onclick="saveAddr()">സേവ്</button> <button class="btn btn-l" onclick="toggleAddr()">റദ്ദാക്കുക</button>
-  </div>
+<div id="mgmt" class="section tabcontent" style="display:none">
+<h3>👥 മാനേജ്മെന്റ് <button class="btn btn-g" style="font-size:11px" onclick="openMgmt()">+ Add</button></h3>
+<div id="mgmtForm" class="form" style="display:none;border:2px dashed #0a4d26;padding:12px;border-radius:10px;margin-bottom:10px">
+<input id="mName" placeholder="പേര്"><input id="mRole" placeholder="സ്ഥാനം"><input id="mPhone" placeholder="ഫോൺ">
+<div class="pass-wrap"><input id="mPass" type="password" placeholder="പാസ്‌വേഡ്"><button class="eye" onclick="mPass.type=mPass.type==='password'?'text':'password'">👁️</button></div>
+<input type="file" id="mPhoto" accept="image/*" style="display:none" onchange="photoPrev(event)"><label for="mPhoto" style="background:#0a4d26;color:white;padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer">📸 ഫോട്ടോ</label> <img id="mPrev" style="display:none;width:50px;height:50px;border-radius:50%;vertical-align:middle;margin-left:8px">
+<div style="margin-top:8px"><button class="btn btn-g" onclick="saveMgmt()">സേവ്</button> <button class="btn btn-l" onclick="mgmtForm.style.display='none'">റദ്ദാക്കുക</button></div>
+</div>
+<div id="mgmtList"></div>
 </div>
 
-<div id="mgmtTab" class="section" style="display:none">
-  <h3>👥 മാനേജ്മെന്റ് <button class="btn btn-g" style="font-size:12px;padding:6px 12px" onclick="openMgmtForm()">+ Add</button></h3>
-  
-  <div id="mgmtForm" class="form">
-    <input id="mName" placeholder="പേര്">
-    <input id="mRole" placeholder="സ്ഥാനം (ഉദാ: പ്രസിഡന്റ്)">
-    <input id="mPhone" placeholder="ഫോൺ നമ്പർ (WhatsApp)">
-    <div class="pass-wrap">
-      <input id="mPass" type="password" placeholder="പാസ്‌വേഡ്">
-      <button class="eye" onclick="togglePass()">👁️</button>
-    </div>
-    <input type="file" id="mPhotoFile" accept="image/*" style="display:none" onchange="previewPhoto(event)">
-    <label for="mPhotoFile" class="upload-label">📸 ഫോട്ടോ അപ്‌ലോഡ് ചെയ്യുക</label>
-    <img id="photoPreview" style="display:none;width:60px;height:60px;border-radius:50%;margin-left:10px;vertical-align:middle">
-    <div style="margin-top:12px"><button class="btn btn-g" onclick="saveMgmt()">സേവ് ചെയ്യുക</button> <button class="btn btn-l" onclick="closeMgmtForm()">റദ്ദാക്കുക</button></div>
-  </div>
+<div id="marks" class="section tabcontent" style="display:none">
+<h3>📊 മാർക്ക് ലിസ്റ്റ് <button class="btn btn-g" style="font-size:11px" onclick="openMarkForm()">+ വിദ്യാർത്ഥി ചേർക്കുക</button></h3>
+<div id="markForm" class="form" style="display:none;border:2px dashed #0a4d26;padding:12px;border-radius:10px;margin-bottom:10px">
+<input id="mkName" placeholder="വിദ്യാർത്ഥിയുടെ പേര്"><input id="mkClass" placeholder="ക്ലാസ്"><input id="mkSub1" type="number" placeholder="ഖുർആൻ മാർക്ക്"><input id="mkSub2" type="number" placeholder="ഹദീസ് മാർക്ക്"><input id="mkSub3" type="number" placeholder="ഫിഖ്ഹ് മാർക്ക്">
+<button class="btn btn-g" onclick="saveMark()">സേവ്</button> <button class="btn btn-l" onclick="markForm.style.display='none'">റദ്ദാക്കുക</button>
+</div>
+<div style="overflow:auto"><table id="markTable"><thead><tr><th>പേര്</th><th>ക്ലാസ്</th><th>ഖുർആൻ</th><th>ഹദീസ്</th><th>ഫിഖ്ഹ്</th><th>Total</th><th>%</th><th>Grade</th><th></th></tr></thead><tbody></tbody></table></div>
+</div>
 
-  <div id="mgmtList" class="mgmt-grid"></div>
+<div id="hw" class="section tabcontent" style="display:none">
+<h3>📝 ഹോം വർക്ക് <button class="btn btn-g" style="font-size:11px" onclick="hwForm.style.display=hwForm.style.display==='none'?'block':'none'">+ Add</button></h3>
+<div id="hwForm" class="form" style="display:none;border:2px dashed #0a4d26;padding:12px;border-radius:10px;margin-bottom:10px">
+<input id="hwClass" placeholder="ക്ലാസ്"><input id="hwSub" placeholder="വിഷയം"><input id="hwDate" type="date"><textarea id="hwDesc" placeholder="ഹോം വർക്ക് വിവരങ്ങൾ"></textarea>
+<button class="btn btn-g" onclick="saveHw()">സേവ്</button>
+</div>
+<div id="hwList"></div>
+</div>
+
+<div id="att" class="section tabcontent" style="display:none">
+<h3>📅 അറ്റൻഡൻസ് - Auto Calculation</h3>
+<div class="form" style="display:flex;gap:6px;flex-wrap:wrap">
+<input id="attDate" type="date" style="flex:1"><input id="attClass" placeholder="ക്ലാസ്" style="flex:1"><button class="btn btn-g" onclick="loadAtt()">Load</button>
+</div>
+<div style="margin:10px 0;display:flex;gap:10px">
+<span class="badge badge-p" id="attPresent">Present: 0</span><span class="badge badge-a" id="attAbsent">Absent: 0</span><span class="badge" style="background:#e3f2fd" id="attPercent">%: 0</span>
+</div>
+<div id="attForm" class="form" style="display:none">
+<input id="attName" placeholder="വിദ്യാർത്ഥിയുടെ പേര്"><select id="attStatus"><option value="Present">Present</option><option value="Absent">Absent</option></select>
+<button class="btn btn-g" onclick="saveAtt()">Add</button>
+</div>
+<table id="attTable"><thead><tr><th>പേര്</th><th>Status</th><th>Action</th></tr></thead><tbody></tbody></table>
+<div style="margin-top:10px"><button class="btn btn-b" onclick="calcAtt()">📊 Auto Calculate</button> <button class="btn btn-g" onclick="attForm.style.display='block'">+ വിദ്യാർത്ഥി</button></div>
 </div>
 
 <script>
-let tempPhoto='';
-function showTab(t){
- document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
- document.getElementById('homeTab').style.display='none';
- document.getElementById('addressTab').style.display='none';
- document.getElementById('mgmtTab').style.display='none';
- if(t==='home'){document.getElementById('homeTab').style.display='block'; document.querySelectorAll('.tab')[0].classList.add('active')}
- if(t==='address'){document.getElementById('addressTab').style.display='block'; document.querySelectorAll('.tab')[1].classList.add('active')}
- if(t==='mgmt'){document.getElementById('mgmtTab').style.display='block'; document.querySelectorAll('.tab')[2].classList.add('active'); loadMgmt();}
+function showTab(id){
+ document.querySelectorAll('.tabcontent').forEach(e=>e.style.display='none');
+ document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+ document.getElementById(id).style.display='block';
+ event.target.classList.add('active');
+ if(id==='mgmt') loadMgmt();
+ if(id==='marks') loadMarks();
+ if(id==='hw') loadHw();
+ if(id==='att') loadAtt();
 }
-const addrDefault={a1:"ദാറുസ്സലാം മദ്റസ",a2:"തെന്നല ആലുങ്ങൽ, മലപ്പുറം",a3:"676508",a4:"+91 9XXXXXXXXX",a5:"8 AM - 5 PM",a6:""};
-function loadAddr(){const d=JSON.parse(localStorage.getItem('d_addr')||'null')||addrDefault; document.getElementById('addrView').innerHTML=`<p><b>സ്ഥാപനം:</b> ${d.a1}</p><p><b>സ്ഥലം:</b> ${d.a2}</p><p><b>പിൻകോഡ്:</b> ${d.a3}</p><p><b>ഫോൺ:</b> ${d.a4}</p><p><b>സമയം:</b> ${d.a5}</p><p><a href="${d.a6}" target="_blank">${d.a6?'Map തുറക്കുക':'Map ലിങ്ക് ഇല്ല'}</a></p>`; a1.value=d.a1;a2.value=d.a2;a3.value=d.a3;a4.value=d.a4;a5.value=d.a5;a6.value=d.a6;}
-function toggleAddr(){const v=document.getElementById('addrView'),e=document.getElementById('addrEdit'); if(e.style.display==='none'){e.style.display='block';v.style.display='none'}else{e.style.display='none';v.style.display='block'}}
-function saveAddr(){const d={a1:a1.value,a2:a2.value,a3:a3.value,a4:a4.value,a5:a5.value,a6:a6.value};localStorage.setItem('d_addr',JSON.stringify(d));loadAddr();toggleAddr();alert('സേവ് ചെയ്തു')}
+const addrDef={a1:"ദാറുസ്സലാം മദ്റസ",a2:"തെന്നല ആലുങ്ങൽ",a3:"676508",a4:"+91 9XXXXXXXXX",a5:"8 AM - 5 PM",a6:""};
+function loadAddr(){const d=JSON.parse(localStorage.getItem('d_addr')||'null')||addrDef; addrView.innerHTML=`<p><b>${d.a1}</b></p><p>${d.a2} - ${d.a3}</p><p>${d.a4} | ${d.a5}</p>`; a1.value=d.a1;a2.value=d.a2;a3.value=d.a3;a4.value=d.a4;a5.value=d.a5;a6.value=d.a6;}
+function toggleAddr(){addrEdit.style.display=addrEdit.style.display==='none'?'block':'none'}
+function saveAddr(){localStorage.setItem('d_addr',JSON.stringify({a1:a1.value,a2:a2.value,a3:a3.value,a4:a4.value,a5:a5.value,a6:a6.value}));loadAddr();toggleAddr();}
 
-let editIndex=-1;
-function openMgmtForm(i=-1){
- document.getElementById('mgmtForm').style.display='block';
- if(i>=0){const list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); const m=list[i]; mName.value=m.name; mRole.value=m.role; mPhone.value=m.phone; mPass.value=m.pass; tempPhoto=m.photo; photoPreview.src=m.photo; photoPreview.style.display='inline-block'; editIndex=i;}
- else{mName.value='';mRole.value='';mPhone.value='';mPass.value='';tempPhoto='';photoPreview.style.display='none';editIndex=-1;}
+let tmpPhoto='';
+function openMgmt(){mgmtForm.style.display='block'; mName.value='';mRole.value='';mPhone.value='';mPass.value='';tmpPhoto='';mPrev.style.display='none';editM=-1}
+let editM=-1;
+function photoPrev(e){const f=e.target.files[0];const r=new FileReader();r.onload=ev=>{tmpPhoto=ev.target.result; mPrev.src=tmpPhoto; mPrev.style.display='inline-block';};r.readAsDataURL(f);}
+function saveMgmt(){if(!mName.value) return alert('പേര്'); let list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); const o={name:mName.value,role:mRole.value,phone:mPhone.value,pass:mPass.value,photo:tmpPhoto||'https://via.placeholder.com/100'}; if(editM>=0) list[editM]=o; else list.push(o); localStorage.setItem('d_mgmt',JSON.stringify(list)); mgmtForm.style.display='none'; loadMgmt();}
+function loadMgmt(){const list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); mgmtList.innerHTML=list.map((m,i)=>`<div class="mgmt-item"><img src="${m.photo}"><div style="flex:1"><b>${m.name}</b><br><small>${m.role} | ${m.phone}</small><div style="margin-top:4px"><a href="tel:${m.phone}"><button class="mini" style="background:#e8f5e9">📞 Call</button></a> <a href="https://wa.me/${m.phone.replace(/\D/g,'')}" target="_blank"><button class="mini" style="background:#25D366;color:white">💬 Chat</button></a> <button class="mini" style="background:#ffebee" onclick="delM(${i})">🗑️</button></div></div></div>`).join('')||'<p style="color:#777">No data</p>';}
+function delM(i){let l=JSON.parse(localStorage.getItem('d_mgmt')||'[]');l.splice(i,1);localStorage.setItem('d_mgmt',JSON.stringify(l));loadMgmt();}
+
+// MARKS
+function openMarkForm(){markForm.style.display='block'; mkName.value='';mkClass.value='';mkSub1.value='';mkSub2.value='';mkSub3.value=''; editMk=-1}
+let editMk=-1;
+function saveMark(){const s1=parseInt(mkSub1.value||0),s2=parseInt(mkSub2.value||0),s3=parseInt(mkSub3.value||0);const tot=s1+s2+s3;const perc=Math.round(tot/3);let grade=perc>=90?'A+':perc>=80?'A':perc>=60?'B':perc>=40?'C':'D'; let list=JSON.parse(localStorage.getItem('d_marks')||'[]');const o={name:mkName.value,cls:mkClass.value,s1,s2,s3,tot,perc,grade}; if(editMk>=0) list[editMk]=o; else list.push(o); localStorage.setItem('d_marks',JSON.stringify(list)); markForm.style.display='none'; loadMarks();}
+function loadMarks(){const list=JSON.parse(localStorage.getItem('d_marks')||'[]'); const tb=markTable.querySelector('tbody'); tb.innerHTML=list.map((m,i)=>`<tr><td>${m.name}</td><td>${m.cls}</td><td>${m.s1}</td><td>${m.s2}</td><td>${m.s3}</td><td><b>${m.tot}</b></td><td>${m.perc}%</td><td><span class="badge" style="background:#e8f5e9">${m.grade}</span></td><td><button class="mini" onclick="delMk(${i})">🗑️</button></td></tr>`).join('');}
+function delMk(i){let l=JSON.parse(localStorage.getItem('d_marks')||'[]');l.splice(i,1);localStorage.setItem('d_marks',JSON.stringify(l));loadMarks();}
+
+// HOMEWORK
+function saveHw(){let l=JSON.parse(localStorage.getItem('d_hw')||'[]');l.unshift({cls:hwClass.value,sub:hwSub.value,date:hwDate.value,desc:hwDesc.value});localStorage.setItem('d_hw',JSON.stringify(l));hwForm.style.display='none';loadHw();}
+function loadHw(){const l=JSON.parse(localStorage.getItem('d_hw')||'[]');hwList.innerHTML=l.map((h,i)=>`<div style="border:1px solid #eee;border-radius:10px;padding:10px;margin-bottom:8px"><b>${h.cls} - ${h.sub}</b> <small style="float:right">${h.date}</small><p style="margin-top:6px;font-size:13px">${h.desc}</p><button class="mini" style="background:#ffebee" onclick="delHw(${i})">Delete</button></div>`).join('')||'<p>No homework</p>';}
+function delHw(i){let l=JSON.parse(localStorage.getItem('d_hw')||'[]');l.splice(i,1);localStorage.setItem('d_hw',JSON.stringify(l));loadHw();}
+
+// ATTENDANCE
+function loadAtt(){
+ const date=attDate.value||new Date().toISOString().split('T')[0]; attDate.value=date;
+ const cls=attClass.value||'All';
+ const key='d_att_'+date+'_'+cls;
+ const list=JSON.parse(localStorage.getItem(key)||'[]');
+ const tb=attTable.querySelector('tbody');
+ tb.innerHTML=list.map((a,i)=>`<tr><td>${a.name}</td><td><span class="badge ${a.status==='Present'?'badge-p':'badge-a'}">${a.status}</span></td><td><button class="mini" onclick="delAtt(${i})">🗑️</button></td></tr>`).join('');
+ calcAtt();
 }
-function closeMgmtForm(){document.getElementById('mgmtForm').style.display='none'}
-function previewPhoto(e){const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=function(ev){tempPhoto=ev.target.result; photoPreview.src=tempPhoto; photoPreview.style.display='inline-block';}; reader.readAsDataURL(file);}
-function saveMgmt(){
- if(!mName.value) return alert('പേര് നൽകുക');
- let list=JSON.parse(localStorage.getItem('d_mgmt')||'[]');
- const obj={name:mName.value, role:mRole.value, phone:mPhone.value, pass:mPass.value, photo:tempPhoto||'https://via.placeholder.com/100?text=No+Photo'};
- if(editIndex>=0) list[editIndex]=obj; else list.push(obj);
- localStorage.setItem('d_mgmt',JSON.stringify(list));
- closeMgmtForm(); loadMgmt();
+function saveAtt(){
+ const date=attDate.value; const cls=attClass.value||'All'; if(!date) return alert('Date');
+ const key='d_att_'+date+'_'+cls;
+ let list=JSON.parse(localStorage.getItem(key)||'[]'); list.push({name:attName.value,status:attStatus.value}); localStorage.setItem(key,JSON.stringify(list)); attName.value=''; loadAtt();
 }
-function loadMgmt(){
- const list=JSON.parse(localStorage.getItem('d_mgmt')||'[]');
- const c=document.getElementById('mgmtList');
- if(list.length===0){c.innerHTML='<p style="color:#777">ഇതുവരെ ആരും ചേർത്തിട്ടില്ല. Add ബട്ടൺ അമർത്തി ചേർക്കുക.</p>'; return;}
- c.innerHTML=list.map((m,i)=>`
-  <div class="mgmt-item">
-    <img src="${m.photo}">
-    <div class="mgmt-info"><b>${m.name}</b><small>${m.role}</small><br><small>${m.phone}</small>
-      <div class="mgmt-actions">
-        <a href="tel:${m.phone}" style="text-decoration:none"><button class="mini call">📞 Call</button></a>
-        <a href="https://wa.me/${m.phone.replace(/[^0-9]/g,'')}" target="_blank" style="text-decoration:none"><button class="mini wa">💬 WhatsApp</button></a>
-        <button class="mini edit" onclick="openMgmtForm(${i})">✏️</button>
-        <button class="mini" style="background:#ffebee;color:#c62828" onclick="delMgmt(${i})">🗑️</button>
-      </div>
-    </div>
-  </div>`).join('');
+function delAtt(i){const date=attDate.value; const cls=attClass.value||'All'; const key='d_att_'+date+'_'+cls; let list=JSON.parse(localStorage.getItem(key)||'[]'); list.splice(i,1); localStorage.setItem(key,JSON.stringify(list)); loadAtt();}
+function calcAtt(){
+ const date=attDate.value; const cls=attClass.value||'All'; const key='d_att_'+date+'_'+cls;
+ const list=JSON.parse(localStorage.getItem(key)||'[]');
+ const present=list.filter(x=>x.status==='Present').length;
+ const total=list.length;
+ const absent=total-present;
+ const perc=total?Math.round((present/total)*100):0;
+ attPresent.textContent='Present: '+present;
+ attAbsent.textContent='Absent: '+absent;
+ attPercent.textContent='%: '+perc+'%';
 }
-function delMgmt(i){if(confirm('ഡിലീറ്റ് ചെയ്യണോ?')){let list=JSON.parse(localStorage.getItem('d_mgmt')||'[]'); list.splice(i,1); localStorage.setItem('d_mgmt',JSON.stringify(list)); loadMgmt();}}
-function togglePass(){const p=document.getElementById('mPass'); p.type=p.type==='password'?'text':'password';}
+
 loadAddr();
+attDate.valueAsDate=new Date();
+hwDate.valueAsDate=new Date();
 </script>
 </body>
 </html>
